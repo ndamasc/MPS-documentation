@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Twin &mdash; Documentação MPS-Festo 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=05d536ce"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=71a39b36"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="Setup Application" href="usage.html" />
+    <link rel="prev" title="MES (Manufacturing Execution System)" href="mes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MPS-Festo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mes.html">MES (Manufacturing Execution System)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Digital Twin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-digital-twin">Creating a Digital Twin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Server.DigitalTwin.DigitalTwin"><code class="docutils literal notranslate"><span class="pre">DigitalTwin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Server.DigitalTwin.DigitalTwin.commit_all"><code class="docutils literal notranslate"><span class="pre">DigitalTwin.commit_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Server.DigitalTwin.DigitalTwin.set_parameter"><code class="docutils literal notranslate"><span class="pre">DigitalTwin.set_parameter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Setup Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mapping.html">Mapping MPS-Festo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MPS-Festo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Digital Twin</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/digitaltwin.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="digital-twin">
+<h1>Digital Twin<a class="headerlink" href="#digital-twin" title="Link para este cabeçalho"></a></h1>
+<section id="creating-a-digital-twin">
+<h2>Creating a Digital Twin<a class="headerlink" href="#creating-a-digital-twin" title="Link para este cabeçalho"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Server.DigitalTwin.DigitalTwin">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Server.DigitalTwin.</span></span><span class="sig-name descname"><span class="pre">DigitalTwin</span></span><a class="headerlink" href="#Server.DigitalTwin.DigitalTwin" title="Link para esta definição"></a></dt>
+<dd><p>Classe principal que representa o Digital Twin do Sistema MPS Festo.</p>
+<p>O Digital Twin é uma representação digital do sistema físico que:</p>
+<ul class="simple">
+<li><p><strong>Sincroniza estado</strong>: Mantém sincronizados todos os sensores, atuadores e estados de controle
+através de um servidor Modbus TCP.</p></li>
+<li><p><strong>Permite monitoramento</strong>: Permite visualizar e monitorar o estado em tempo real através
+de softwares como FactoryIO.</p></li>
+<li><p><strong>Permite controle remoto</strong>: Permite que softwares externos (clientes Modbus) enviem
+comandos e parâmetros de controle.</p></li>
+<li><p><strong>Gerencia comunicação</strong>: Utiliza protocolo Modbus TCP (porta 502 padrão) para comunicação
+com outros componentes do sistema.</p></li>
+</ul>
+<p>O servidor Modbus mantém dois tipos principais de dados:</p>
+<ul class="simple">
+<li><p><strong>Discrete Inputs (DI)</strong>: Valores booleanos para sensores e atuadores digitais</p></li>
+<li><p><strong>Holding Registers (HR)</strong>: Valores numéricos para posições, velocidades e setpoints</p></li>
+</ul>
+<dl>
+<dt>Atributos:</dt><dd><p>logger (LoggerManager): Sistema de logging para rastrear eventos e erros.</p>
+<p>server (ModbusServer): Instância do servidor Modbus TCP que gerencia comunicação.</p>
+<p>db (DataBank): Banco de dados do servidor Modbus onde os estados são armazenados.</p>
+<p>DI (type): Referência à enumeração DI para uso como <code class="docutils literal notranslate"><span class="pre">self.DI.LAMP_GREEN_DT</span></code>.</p>
+<p>INPUT_HR (type): Referência à enumeração INPUT_HR para uso como <code class="docutils literal notranslate"><span class="pre">self.INPUT_HR.Crane_Fedder_Setpoint_X</span></code>.</p>
+</dd>
+<dt>Exemplo de uso completo:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Criar instância do Digital Twin</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span> <span class="o">=</span> <span class="n">DigitalTwin</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Acionar cilindro do alimentador</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">DI</span><span class="o">.</span><span class="n">Cylinder_Pusher_Feeder</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Definir posição do braço robótico (X=5.0, Z=3.0 no FactoryIO)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">INPUT_HR</span><span class="o">.</span><span class="n">Crane_Fedder_Setpoint_X</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">INPUT_HR</span><span class="o">.</span><span class="n">Crane_Fedder_Setpoint_Z</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sincronizar todos os dados com servidor Modbus</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">commit_all</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Agora clientes Modbus (ex: FactoryIO) podem ler esses valores</span>
+</pre></div>
+</div>
+</dd>
+<dt>Notas técnicas:</dt><dd><ul class="simple">
+<li><p>O servidor Modbus inicia em modo não-bloqueante (no_block=True) para não
+bloquear a execução do programa principal.</p></li>
+<li><p>A porta 502 é a porta padrão do Modbus TCP em sistemas Unix/Linux. Em Windows,
+pode-se usar porta 502 se executar com privilégios de administrador, ou uma
+porta alternativa como 5020.</p></li>
+<li><p>Erros na inicialização são registrados no log mas não interrompem a execução.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Server.DigitalTwin.DigitalTwin.commit_all">
+<span class="sig-name descname"><span class="pre">commit_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Server.DigitalTwin.DigitalTwin.commit_all" title="Link para esta definição"></a></dt>
+<dd><p>Sincroniza todos os Discrete Inputs e Holding Registers com o servidor Modbus.</p>
+<p>Este método é crucial para que as alterações feitas via <code class="docutils literal notranslate"><span class="pre">set_parameter()</span></code> se
+tornem visíveis para clientes Modbus (como FactoryIO). Ele:</p>
+<ol class="arabic simple">
+<li><p><strong>Envia Discrete Inputs</strong>: Transfere o array <code class="docutils literal notranslate"><span class="pre">di</span></code> (valores booleanos) para
+o servidor Modbus, começando no endereço 0.</p></li>
+<li><p><strong>Envia Holding Registers</strong>: Transfere o array <code class="docutils literal notranslate"><span class="pre">input_hr</span></code> (valores numéricos)
+para o servidor Modbus, começando no endereço 0.</p></li>
+<li><p><strong>Trata compatibilidade</strong>: Verifica qual método de escrita o servidor Modbus
+suporta (<code class="docutils literal notranslate"><span class="pre">set_input_registers</span></code> ou <code class="docutils literal notranslate"><span class="pre">set_words</span></code>) e usa o apropriado.</p></li>
+<li><p><strong>Registra operações</strong>: Registra cada operação bem-sucedida no log para
+rastreamento de eventos.</p></li>
+</ol>
+<dl>
+<dt>Fluxo típico de uso:</dt><dd><ol class="arabic simple">
+<li><p>Chamar <code class="docutils literal notranslate"><span class="pre">set_parameter()</span></code> múltiplas vezes para alterar valores locais</p></li>
+<li><p>Chamar <code class="docutils literal notranslate"><span class="pre">commit_all()</span></code> uma vez para sincronizar tudo de uma vez</p></li>
+<li><p>Clientes Modbus agora conseguem ler os novos valores</p></li>
+</ol>
+</dd>
+<dt>Notas importantes:</dt><dd><ul class="simple">
+<li><p>Chamar <code class="docutils literal notranslate"><span class="pre">commit_all()</span></code> é obrigatório para que alterações se tornem visíveis
+a clientes Modbus. Caso contrário, o servidor terá dados desatualizados.</p></li>
+<li><p>Em operações críticas, você pode chamar <code class="docutils literal notranslate"><span class="pre">commit_all()</span></code> a cada
+<code class="docutils literal notranslate"><span class="pre">set_parameter()</span></code>, mas é menos eficiente.</p></li>
+<li><p>Os comentários no código (“Fazendo o set de todos…”) indicam que há
+redundância de dados (INPUT_HR vs Words) que pode ser otimizada.</p></li>
+</ul>
+</dd>
+<dt>Exemplos:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span> <span class="o">=</span> <span class="n">DigitalTwin</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Configurar vários parâmetros</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">DI</span><span class="o">.</span><span class="n">LAMP_GREEN_DT</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">DI</span><span class="o">.</span><span class="n">LAMP_RED_DT</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">INPUT_HR</span><span class="o">.</span><span class="n">Crane_Fedder_Setpoint_X</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sincronizar uma única vez</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">commit_all</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+<dt>Ver também:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">set_parameter()</span></code>: Para alterar valores individuais antes de commit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Server.DigitalTwin.DigitalTwin.set_parameter">
+<span class="sig-name descname"><span class="pre">set_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Server.DigitalTwin.DigitalTwin.set_parameter" title="Link para esta definição"></a></dt>
+<dd><p>Define o valor de um parâmetro específico (Discrete Input ou Holding Register).</p>
+<p>Este método permite modificar o estado de um único sensor, atuador ou parâmetro
+de controle. Os valores são armazenados localmente no array global (<code class="docutils literal notranslate"><span class="pre">di</span></code> ou
+<code class="docutils literal notranslate"><span class="pre">input_hr</span></code>) e só se tornam visíveis aos clientes Modbus após chamar <code class="docutils literal notranslate"><span class="pre">commit_all()</span></code>.</p>
+<dl>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>parameter (DI | INPUT_HR): Identificador do parâmetro a ser modificado.</dt><dd><p>Deve ser um membro da enumeração DI ou INPUT_HR.
+Exemplo: <code class="docutils literal notranslate"><span class="pre">DI.LAMP_GREEN_DT</span></code> ou <code class="docutils literal notranslate"><span class="pre">INPUT_HR.Crane_Fedder_Setpoint_X</span></code></p>
+</dd>
+<dt>value (int | bool | float): Novo valor para o parâmetro.</dt><dd><ul class="simple">
+<li><p>Para parâmetros DI: deve ser booleano (True/False)</p></li>
+<li><p>Para parâmetros INPUT_HR: deve ser inteiro (0-1000)</p></li>
+<li><p>Valores de outros tipos serão convertidos automaticamente</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Raises:</dt><dd><p>TypeError: Se o parâmetro não for instância de DI nem INPUT_HR, registra erro no log.</p>
+</dd>
+<dt>Notas importantes:</dt><dd><ul class="simple">
+<li><p><strong>Conversão automática</strong>: Booleans são convertidos para True/False para DI,
+números são convertidos para inteiros para INPUT_HR.</p></li>
+<li><p><strong>Escala de INPUT_HR</strong>: Valores de 0 a 1000 mapeiam para 0 a 10.0 no FactoryIO.
+Multiplicar por 100: valor_factoryio = valor_input_hr / 100.0</p></li>
+<li><p><strong>Sincronização necessária</strong>: Após modificar parâmetros, você DEVE chamar
+<code class="docutils literal notranslate"><span class="pre">commit_all()</span></code> para que as mudanças sejam enviadas ao servidor Modbus.</p></li>
+<li><p><strong>Sem verificação de limites</strong>: O método não valida se o valor está no intervalo
+esperado. Cabe ao código chamador garantir valores válidos.</p></li>
+</ul>
+</dd>
+<dt>Exemplos de uso:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span> <span class="o">=</span> <span class="n">DigitalTwin</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Exemplo 1: Controlar lâmpadas (Discrete Inputs)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">DI</span><span class="o">.</span><span class="n">LAMP_GREEN_DT</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>   <span class="c1"># Acende lâmpada verde</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">DI</span><span class="o">.</span><span class="n">LAMP_RED_DT</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>    <span class="c1"># Apaga lâmpada vermelha</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Exemplo 2: Controlar atuadores (Discrete Inputs)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">DI</span><span class="o">.</span><span class="n">Cylinder_Pusher_Feeder</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># Ativa cilindro</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">DI</span><span class="o">.</span><span class="n">Conveyor_Job</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>    <span class="c1"># Inicia esteira</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Exemplo 3: Definir posições (Holding Registers)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">INPUT_HR</span><span class="o">.</span><span class="n">Crane_Fedder_Setpoint_X</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>  <span class="c1"># X = 5.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">set_parameter</span><span class="p">(</span><span class="n">INPUT_HR</span><span class="o">.</span><span class="n">Crane_Fedder_Setpoint_Z</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>  <span class="c1"># Z = 3.0</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># IMPORTANTE: Sincronizar com servidor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">commit_all</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+<dt>Ver também:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DI</span></code>: Enumeração de Discrete Inputs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INPUT_HR</span></code>: Enumeração de Holding Registers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">commit_all()</span></code>: Para sincronizar parâmetros com servidor Modbus</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p>For more information about registers mapping, see <a class="reference internal" href="mapping.html#mapping"><span class="std std-ref">mapping PLC</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="mes.html" class="btn btn-neutral float-left" title="MES (Manufacturing Execution System)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Setup Application" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2026, Lukas L. Moreira; Thiago R. Salgado; Nathalia C. Damasceno.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

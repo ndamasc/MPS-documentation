@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MES (Manufacturing Execution System) &mdash; Documentação MPS-Festo 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=05d536ce"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=71a39b36"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="Digital Twin" href="digitaltwin.html" />
+    <link rel="prev" title="Welcome to the MPS-Festo documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MPS-Festo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MES (Manufacturing Execution System)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Client.MES.MES"><code class="docutils literal notranslate"><span class="pre">MES</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.flow_first_plc"><code class="docutils literal notranslate"><span class="pre">MES.flow_first_plc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.flow_second_plc"><code class="docutils literal notranslate"><span class="pre">MES.flow_second_plc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.get_plc"><code class="docutils literal notranslate"><span class="pre">MES.get_plc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.gripper_close"><code class="docutils literal notranslate"><span class="pre">MES.gripper_close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.gripper_down"><code class="docutils literal notranslate"><span class="pre">MES.gripper_down()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.gripper_open"><code class="docutils literal notranslate"><span class="pre">MES.gripper_open()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.gripper_up"><code class="docutils literal notranslate"><span class="pre">MES.gripper_up()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.handle_lamp"><code class="docutils literal notranslate"><span class="pre">MES.handle_lamp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.magazine_advance"><code class="docutils literal notranslate"><span class="pre">MES.magazine_advance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.magazine_eject"><code class="docutils literal notranslate"><span class="pre">MES.magazine_eject()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.monitor_buttons"><code class="docutils literal notranslate"><span class="pre">MES.monitor_buttons()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.move_to_drop"><code class="docutils literal notranslate"><span class="pre">MES.move_to_drop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.move_to_home"><code class="docutils literal notranslate"><span class="pre">MES.move_to_home()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.move_to_home_reset"><code class="docutils literal notranslate"><span class="pre">MES.move_to_home_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.move_to_reject"><code class="docutils literal notranslate"><span class="pre">MES.move_to_reject()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.recognize_inputs_handling"><code class="docutils literal notranslate"><span class="pre">MES.recognize_inputs_handling()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.reset_to_home_position"><code class="docutils literal notranslate"><span class="pre">MES.reset_to_home_position()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.stop_all_operations"><code class="docutils literal notranslate"><span class="pre">MES.stop_all_operations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="digitaltwin.html">Digital Twin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Setup Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mapping.html">Mapping MPS-Festo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MPS-Festo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MES (Manufacturing Execution System)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mes.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mes-manufacturing-execution-system">
+<h1>MES (Manufacturing Execution System)<a class="headerlink" href="#mes-manufacturing-execution-system" title="Link para este cabeçalho"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="Client.MES.MES">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Client.MES.</span></span><span class="sig-name descname"><span class="pre">MES</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clients</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ModbusTcpClient</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gemeo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="digitaltwin.html#Server.DigitalTwin.DigitalTwin" title="Server.DigitalTwin.DigitalTwin"><span class="pre">DigitalTwin</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES" title="Link para esta definição"></a></dt>
+<dd><p>Classe que abstrai o MES do Sistema de Produção Modular (MPS).</p>
+<dl class="simple">
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><p>get_plc(name: str) -&gt; ModbusTcpClient: Retorna o cliente Modbus do PLC pelo nome.</p></li>
+<li><p>stop_all_operations(): Para todas as operações de todos os PLC’s.</p></li>
+<li><p>reset_to_home_position(): Reseta o sistema para a posição home.</p></li>
+<li><p>monitor_buttons(): Monitora os botões de start, stop e reset.</p></li>
+<li><p>handle_lamp(): Controla as lâmpadas indicadoras de status.</p></li>
+<li><p>gripper_open(): Abre a garra do manipulador.</p></li>
+<li><p>gripper_close(): Fecha a garra do manipulador.</p></li>
+<li><p>gripper_down(): Desce a garra do manipulador.</p></li>
+<li><p>gripper_up(): Sobe a garra do manipulador.</p></li>
+<li><p>move_to_home(): Move o manipulador para a posição home.</p></li>
+<li><p>move_to_reject(): Move o manipulador para a posição de rejeito.</p></li>
+<li><p>move_to_drop(): Move o manipulador para a posição de deixar peça.</p></li>
+<li><p>magazine_eject(): Ejetar peça do magazine.</p></li>
+<li><p>magazine_advance(): Avança o magazine para a posição de pegar peça.</p></li>
+<li><p>flow_first_plc(): Fluxo principal do PLC de manuseio.</p></li>
+<li><p>flow_second_plc(): Fluxo principal do PLC de prensagem.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.flow_first_plc">
+<span class="sig-name descname"><span class="pre">flow_first_plc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.flow_first_plc" title="Link para esta definição"></a></dt>
+<dd><p>Método principal para o fluxo de operações do PLC de manuseio.</p>
+<dl class="simple">
+<dt>Funcionalidades:</dt><dd><ul class="simple">
+<li><p>Verificação do estado da máquina.</p></li>
+<li><p>Avanço e ejeção do magazine.</p></li>
+<li><p>Operações da garra (abrir, fechar, mover para posições específicas).</p></li>
+<li><p>Detecção e classificação de peças (preto, prata, rosa).</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>O fluxo é contínuo e depende do estado da máquina.</p></li>
+<li><p>Utiliza registros Modbus para comunicação com o PLC.</p></li>
+<li><p>Armazena a classificação das peças em uma lista ‘parts’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.flow_second_plc">
+<span class="sig-name descname"><span class="pre">flow_second_plc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.flow_second_plc" title="Link para esta definição"></a></dt>
+<dd><p>Método principal para o fluxo de operações do PLC de prensagem.</p>
+<dl class="simple">
+<dt>Funcionalidades:</dt><dd><ul class="simple">
+<li><p>Verificação do estado da máquina.</p></li>
+<li><p>Detecção de peças na esteira.</p></li>
+<li><p>Identificação da cor das peças (prata, rosa).</p></li>
+<li><p>Controle da esteira e sinalização via Digital Twin.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>O fluxo é contínuo e depende do estado da máquina.</p></li>
+<li><p>Utiliza registros Modbus para comunicação com o PLC.</p></li>
+<li><p>Utiliza a lista ‘parts’ para armazenar a classificação das peças</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.get_plc">
+<span class="sig-name descname"><span class="pre">get_plc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ModbusTcpClient</span></span></span><a class="headerlink" href="#Client.MES.MES.get_plc" title="Link para esta definição"></a></dt>
+<dd><p>Método para obter o cliente Modbus de um PLC pelo nome.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name (str): Nome do PLC (e.g., ‘MPS_HANDLING’, ‘MPS_PRESSING’, ‘MPS_SORTING’).</p>
+</dd>
+<dt>Returns:</dt><dd><p>ModbusTcpClient: Cliente Modbus do PLC solicitado.</p>
+</dd>
+<dt>Raises:</dt><dd><p>KeyError: Se o PLC com o nome fornecido não for encontrado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.gripper_close">
+<span class="sig-name descname"><span class="pre">gripper_close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.gripper_close" title="Link para esta definição"></a></dt>
+<dd><p>Método para fechar a garra do sistema.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se a garra foi fechada com sucesso, False em caso de erro.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.gripper_down">
+<span class="sig-name descname"><span class="pre">gripper_down</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.gripper_down" title="Link para esta definição"></a></dt>
+<dd><p>Método para descer a garra do sistema.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se a garra desceu com sucesso, False em caso de erro.</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Verifica se a garra já está na posição baixa antes de descer.</p></li>
+<li><p>Utiliza um timeout para evitar espera indefinida.</p></li>
+<li><p>Notifica o Digital Twin sobre o status da operação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.gripper_open">
+<span class="sig-name descname"><span class="pre">gripper_open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.gripper_open" title="Link para esta definição"></a></dt>
+<dd><p>Método para abrir a garra do sistema.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se a garra foi aberta com sucesso, False em caso de erro.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.gripper_up">
+<span class="sig-name descname"><span class="pre">gripper_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.gripper_up" title="Link para esta definição"></a></dt>
+<dd><p>Método para subir a garra do sistema.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se a garra subiu com sucesso, False em caso de erro.</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Verifica se a garra já está na posição alta antes de subir.</p></li>
+<li><p>Utiliza um timeout para evitar espera indefinida.</p></li>
+<li><p>Notifica o Digital Twin sobre o status da operação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.handle_lamp">
+<span class="sig-name descname"><span class="pre">handle_lamp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.handle_lamp" title="Link para esta definição"></a></dt>
+<dd><p>Método que controla as lâmpadas indicadoras de status do sistema.</p>
+<dl class="simple">
+<dt>Estados e comportamentos:</dt><dd><ul class="simple">
+<li><p>running: Lâmpada verde acesa.</p></li>
+<li><p>idle:        Lâmpada verde acesa, lâmpada amarela piscando.</p></li>
+<li><p>error:       Lâmpada vermelha e amarela acesas.</p></li>
+<li><p>emergency:   Lâmpada vermelha piscando.</p></li>
+<li><p>cycle:       Lâmpadas vermelha, amarela e verde piscando em sequência.</p></li>
+<li><p>stopped:     Lâmpada vermelha acesa.</p></li>
+</ul>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>O estado do sistema é determinado pela variável ‘state_machine’.</p></li>
+<li><p>As lâmpadas são controladas via registros Modbus e atualizadas no Digital Twin.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.magazine_advance">
+<span class="sig-name descname"><span class="pre">magazine_advance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.magazine_advance" title="Link para esta definição"></a></dt>
+<dd><p>Método para avançar o magazine.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se o magazine foi avançado com sucesso, False em caso de erro.</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Verifica se o magazine já está avançado antes de avançar.</p></li>
+<li><p>Utiliza um timeout para evitar espera indefinida.</p></li>
+<li><p>Notifica o Digital Twin sobre o status da operação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.magazine_eject">
+<span class="sig-name descname"><span class="pre">magazine_eject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.magazine_eject" title="Link para esta definição"></a></dt>
+<dd><p>Método para ejetar a peça do magazine.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se a peça foi ejetada com sucesso, False em caso de erro.</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Verifica se o magazine já está recuado antes de ejetar.</p></li>
+<li><p>Utiliza um timeout para evitar espera indefinida.</p></li>
+<li><p>Notifica o Digital Twin sobre o status da operação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.monitor_buttons">
+<span class="sig-name descname"><span class="pre">monitor_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.monitor_buttons" title="Link para esta definição"></a></dt>
+<dd><p>Método que monitora os botões de start, stop e reset do sistema.</p>
+<dl class="simple">
+<dt>Principal funcionalidade:</dt><dd><ul class="simple">
+<li><p>Start: Inicia o sistema se estiver em estado ‘idle’.</p></li>
+<li><p>Stop: Para o sistema se estiver em estado ‘running’ ou ‘cycle’.</p></li>
+<li><p>Reset: Reseta o sistema se estiver em estado ‘stopped’ ou ‘cycle’.</p></li>
+</ul>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>O estado do sistema é gerenciado pela variável ‘state_machine’.</p></li>
+<li><p>As ações dos botões são refletidas nas lâmpadas indicadoras e no Digital Twin.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.move_to_drop">
+<span class="sig-name descname"><span class="pre">move_to_drop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.move_to_drop" title="Link para esta definição"></a></dt>
+<dd><p>Método para mover o manipulador para a posição deixa durante a operação normal.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se o manipulador chegou na posição deixa com sucesso, False em caso de erro.</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Verifica o estado da máquina antes de iniciar o movimento.</p></li>
+<li><p>Utiliza um timeout para evitar espera indefinida.</p></li>
+<li><p>Notifica o Digital Twin sobre o status da operação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.move_to_home">
+<span class="sig-name descname"><span class="pre">move_to_home</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.move_to_home" title="Link para esta definição"></a></dt>
+<dd><p>Método para mover o manipulador para a posição home durante a operação normal.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se o manipulador chegou na posição home com sucesso, False em caso de erro.</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Verifica o estado da máquina antes de iniciar o movimento.</p></li>
+<li><p>Utiliza um timeout para evitar espera indefinida.</p></li>
+<li><p>Notifica o Digital Twin sobre o status da operação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.move_to_home_reset">
+<span class="sig-name descname"><span class="pre">move_to_home_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.move_to_home_reset" title="Link para esta definição"></a></dt>
+<dd><p>Método para mover o manipulador para a posição home durante o reset do sistema.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se o manipulador chegou na posição home com sucesso, False em caso de erro.</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Não verifica o estado da máquina, pois é usado durante o reset.</p></li>
+<li><p>Utiliza um timeout para evitar espera indefinida.</p></li>
+<li><p>Notifica o Digital Twin sobre o status da operação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.move_to_reject">
+<span class="sig-name descname"><span class="pre">move_to_reject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.move_to_reject" title="Link para esta definição"></a></dt>
+<dd><p>Método para mover o manipulador para a posição rejeito durante a operação normal.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se o manipulador chegou na posição rejeito com sucesso, False em caso de erro.</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Verifica o estado da máquina antes de iniciar o movimento.</p></li>
+<li><p>Utiliza um timeout para evitar espera indefinida.</p></li>
+<li><p>Notifica o Digital Twin sobre o status da operação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.recognize_inputs_handling">
+<span class="sig-name descname"><span class="pre">recognize_inputs_handling</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.recognize_inputs_handling" title="Link para esta definição"></a></dt>
+<dd><p>Método para reconhecer e exibir o estado dos botões de start, stop e reset do PLC de manuseio.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Lê os registradores de entrada correspondentes aos botões.</p></li>
+<li><p>Exibe o estado atual dos botões a cada 2 segundos.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.reset_to_home_position">
+<span class="sig-name descname"><span class="pre">reset_to_home_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.reset_to_home_position" title="Link para esta definição"></a></dt>
+<dd><p>Método que reseta o sistema: sobe garra, recua magazine e vai para home</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.stop_all_operations">
+<span class="sig-name descname"><span class="pre">stop_all_operations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.stop_all_operations" title="Link para esta definição"></a></dt>
+<dd><p>Método para parar todas as operações de todos os PLC’s.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to the MPS-Festo documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="digitaltwin.html" class="btn btn-neutral float-right" title="Digital Twin" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2026, Lukas L. Moreira; Thiago R. Salgado; Nathalia C. Damasceno.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

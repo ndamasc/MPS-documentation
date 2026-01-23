@@ -1,0 +1,30 @@
+Mapping MPS-Festo
+====================
+
+.. _mapping:
+
+.. currentmodule:: Maps.Mapping
+
+.. autoclass:: holding_register_handling_plc
+    :members:
+    :member-order: bysource
+    :undoc-members:
+    :show-inheritance:
+
+.. autoclass:: holding_register_pressing_plc
+    :members:
+    :member-order: bysource
+    :undoc-members:
+    :show-inheritance:
+   
+.. autoclass:: input_register_handling_plc
+    :members:
+    :member-order: bysource
+    :undoc-members:
+    :show-inheritance:
+
+.. autoclass:: input_register_pressing_plc
+    :members:
+    :member-order: bysource
+    :undoc-members:
+    :show-inheritance:

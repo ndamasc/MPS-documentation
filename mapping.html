@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapping MPS-Festo &mdash; Documentação MPS-Festo 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=05d536ce"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=71a39b36"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="prev" title="Setup Application" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MPS-Festo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mes.html">MES (Manufacturing Execution System)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digitaltwin.html">Digital Twin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Setup Application</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mapping MPS-Festo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.REMOTE_ENABLE"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.REMOTE_ENABLE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.MACHINE_RUNNING"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.MACHINE_RUNNING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.MACHINE_STOPPED"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.MACHINE_STOPPED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.MACHINE_EMERGENCY"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.MACHINE_EMERGENCY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.CMD_START"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.CMD_START</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.CMD_STOP"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.CMD_STOP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.CMD_RESET"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.CMD_RESET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.MODE_AUTO"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.MODE_AUTO</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.LAMP_GREEN"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.LAMP_GREEN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.LAMP_YELLOW"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.LAMP_YELLOW</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.LAMP_RED"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.LAMP_RED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.LAMP_START"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.LAMP_START</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.LAMP_RESET"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.LAMP_RESET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.LAMP_Q1"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.LAMP_Q1</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.LAMP_Q2"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.LAMP_Q2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.GRIPPER_TO_MAGAZINE_ESQ"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.GRIPPER_TO_MAGAZINE_ESQ</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.GRIPPER_TO_STATION_DIR"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.GRIPPER_TO_STATION_DIR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.GRIPPER_DOWN"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.GRIPPER_DOWN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.GRIPPER_OPEN"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.GRIPPER_OPEN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_handling_plc.MAGAZINE_EJECT"><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc.MAGAZINE_EJECT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_LIGA_ESTEIRA"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_LIGA_ESTEIRA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_REC_BLOQUEADOR"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_REC_BLOQUEADOR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_REC_COINS"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_REC_COINS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_PRESS_ON"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_PRESS_ON</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_REC_ACTUATOR_STOP_COIN"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_REC_ACTUATOR_STOP_COIN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_AVANCA_COINS"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_AVANCA_COINS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_L_START"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_L_START</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_L_RESET"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_L_RESET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_L_Q1"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_L_Q1</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.holding_register_pressing_plc.MB_L_Q2"><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc.MB_L_Q2</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.sensor_peca_suporte"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.sensor_peca_suporte</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.sensor_braco_deixa"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.sensor_braco_deixa</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.sensor_braco_home"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.sensor_braco_home</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.sensor_braco_rejeito"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.sensor_braco_rejeito</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.sensor_garra_avancada"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.sensor_garra_avancada</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.sensor_garra_recuada"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.sensor_garra_recuada</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.sensor_peca_garra"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.sensor_peca_garra</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.MB_IP_FI_CAN"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.MB_IP_FI_CAN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.button_start"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.button_start</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.button_stop"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.button_stop</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.button_reset"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.button_reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.sensor_magazine_entrada_recuado"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.sensor_magazine_entrada_recuado</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_handling_plc.sensor_magazine_entrada_avancado"><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc.sensor_magazine_entrada_avancado</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_START"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_START</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_STOP"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_STOP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_RESET"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_RESET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_PART_AV"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_PART_AV</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_PC_COIN"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_PC_COIN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_PC_FIM"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_PC_FIM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_SENSOR_IND"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_SENSOR_IND</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_BARREIRA_IND"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_BARREIRA_IND</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_BLOQ_FRONT"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_BLOQ_FRONT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_COIN_REC"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_COIN_REC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Maps.Mapping.input_register_pressing_plc.MB_COIN_FRONT"><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc.MB_COIN_FRONT</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MPS-Festo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mapping MPS-Festo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mapping.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mapping-mps-festo">
+<h1>Mapping MPS-Festo<a class="headerlink" href="#mapping-mps-festo" title="Link para este cabeçalho"></a></h1>
+<dl class="py class" id="mapping">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Maps.Mapping.</span></span><span class="sig-name descname"><span class="pre">holding_register_handling_plc</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc" title="Link para esta definição"></a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe que mapeia os Holding Registers (registradores de escrita) do PLC do Handling.</p>
+<p>Os Holding Registers são endereços Modbus que o sistema de controle (máquina principal)
+utiliza para enviar <strong>comandos</strong> ao módulo Handling. Cada registrador representa
+uma ação ou comando específico que o PLC do Handling deve executar.</p>
+<p>Este módulo do MPS é responsável por:
+- Movimentar o braço robótico (garra)
+- Controlar o magazine alimentador de peças
+- Gerenciar o painel de sinalizadores (lâmpadas Andon)
+- Processar botões de controle (Start, Stop, Reset)</p>
+<p>Categorias de Registradores:</p>
+<dl>
+<dt><strong>Controle Remoto e Modo</strong>:</dt><dd><ul class="simple">
+<li><p>Habilitar/desabilitar controle remoto</p></li>
+<li><p>Alternar modo automático/manual</p></li>
+</ul>
+</dd>
+<dt><strong>Estados da Máquina</strong>:</dt><dd><ul class="simple">
+<li><p>Indicar máquina rodando, parada ou em emergência</p></li>
+<li><p>Pulsos de comando (Start, Stop, Reset)</p></li>
+</ul>
+</dd>
+<dt><strong>Sinalizadores (Lâmpadas)</strong>:</dt><dd><ul class="simple">
+<li><p>Painel Andon com cores (verde, amarelo, vermelho)</p></li>
+<li><p>Luz de fundo dos botões</p></li>
+</ul>
+</dd>
+<dt><strong>Movimentos do Braço Robótico</strong>:</dt><dd><ul class="simple">
+<li><p>Movimentar garra para magazine ou estação</p></li>
+<li><p>Descer/subir garra</p></li>
+<li><p>Abrir/fechar garra</p></li>
+</ul>
+</dd>
+<dt><strong>Sistema de Magazine</strong>:</dt><dd><ul class="simple">
+<li><p>Avançar/recuar mecanismo de alimentação</p></li>
+</ul>
+</dd>
+<dt>Notas Importantes:</dt><dd><ul class="simple">
+<li><p>Todos os valores são booleanos (True = ativar, False = desativar)</p></li>
+<li><p>Os endereços foram escolhidos para deixar espaço para expansões futuras</p></li>
+<li><p>A documentação das lâmpadas está relacionada a padrão Andon (sistema visual de status)</p></li>
+</ul>
+</dd>
+<dt>Exemplo de uso:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">Mapping</span><span class="w"> </span><span class="kn">import</span> <span class="n">holding_register_handling_plc</span> <span class="k">as</span> <span class="n">HR</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Indicar que máquina está em execução</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR</span><span class="o">.</span><span class="n">MACHINE_RUNNING</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Enviar comando para mover garra ao magazine</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR</span><span class="o">.</span><span class="n">GRIPPER_TO_MAGAZINE_ESQ</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Acender lâmpada de aviso (amarelo)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR</span><span class="o">.</span><span class="n">LAMP_YELLOW</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Ver também:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc</span></code>: Registradores de leitura (sensores) deste módulo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc</span></code>: Comandos para o módulo de prensagem</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.REMOTE_ENABLE">
+<span class="sig-name descname"><span class="pre">REMOTE_ENABLE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.REMOTE_ENABLE" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.MACHINE_RUNNING">
+<span class="sig-name descname"><span class="pre">MACHINE_RUNNING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.MACHINE_RUNNING" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.MACHINE_STOPPED">
+<span class="sig-name descname"><span class="pre">MACHINE_STOPPED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.MACHINE_STOPPED" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.MACHINE_EMERGENCY">
+<span class="sig-name descname"><span class="pre">MACHINE_EMERGENCY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.MACHINE_EMERGENCY" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.CMD_START">
+<span class="sig-name descname"><span class="pre">CMD_START</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.CMD_START" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.CMD_STOP">
+<span class="sig-name descname"><span class="pre">CMD_STOP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.CMD_STOP" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.CMD_RESET">
+<span class="sig-name descname"><span class="pre">CMD_RESET</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.CMD_RESET" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.MODE_AUTO">
+<span class="sig-name descname"><span class="pre">MODE_AUTO</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.MODE_AUTO" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.LAMP_GREEN">
+<span class="sig-name descname"><span class="pre">LAMP_GREEN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.LAMP_GREEN" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.LAMP_YELLOW">
+<span class="sig-name descname"><span class="pre">LAMP_YELLOW</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.LAMP_YELLOW" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.LAMP_RED">
+<span class="sig-name descname"><span class="pre">LAMP_RED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.LAMP_RED" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.LAMP_START">
+<span class="sig-name descname"><span class="pre">LAMP_START</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.LAMP_START" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.LAMP_RESET">
+<span class="sig-name descname"><span class="pre">LAMP_RESET</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.LAMP_RESET" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.LAMP_Q1">
+<span class="sig-name descname"><span class="pre">LAMP_Q1</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">13</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.LAMP_Q1" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.LAMP_Q2">
+<span class="sig-name descname"><span class="pre">LAMP_Q2</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">14</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.LAMP_Q2" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.GRIPPER_TO_MAGAZINE_ESQ">
+<span class="sig-name descname"><span class="pre">GRIPPER_TO_MAGAZINE_ESQ</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.GRIPPER_TO_MAGAZINE_ESQ" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.GRIPPER_TO_STATION_DIR">
+<span class="sig-name descname"><span class="pre">GRIPPER_TO_STATION_DIR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.GRIPPER_TO_STATION_DIR" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.GRIPPER_DOWN">
+<span class="sig-name descname"><span class="pre">GRIPPER_DOWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">17</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.GRIPPER_DOWN" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.GRIPPER_OPEN">
+<span class="sig-name descname"><span class="pre">GRIPPER_OPEN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">18</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.GRIPPER_OPEN" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_handling_plc.MAGAZINE_EJECT">
+<span class="sig-name descname"><span class="pre">MAGAZINE_EJECT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">19</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_handling_plc.MAGAZINE_EJECT" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Maps.Mapping.</span></span><span class="sig-name descname"><span class="pre">holding_register_pressing_plc</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc" title="Link para esta definição"></a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe que mapeia os Holding Registers (registradores de escrita) do PLC de Prensagem.</p>
+<p>Os Holding Registers são endereços Modbus que o sistema de controle utiliza para
+enviar <strong>comandos</strong> ao módulo Pressing. Cada registrador representa um comando
+específico para controlar o sistema de prensa e transporte de moedas (peças).</p>
+<p>O módulo de Prensagem é responsável por:
+- Gerenciar a esteira transportadora de peças
+- Controlar a prensa hidráulica/mecânica
+- Posicionar moedas (peças) antes da prensagem
+- Remover moedas prensadas ou defeituosas
+- Gerenciar sinalizadores de status (lâmpadas)</p>
+<p>Categorias de Comandos:</p>
+<dl class="simple">
+<dt><strong>Controle de Esteira e Mecanismos</strong>:</dt><dd><ul class="simple">
+<li><p>Liga/desliga esteira de transporte</p></li>
+<li><p>Controla atuadores de bloqueio e avanço</p></li>
+<li><p>Gerencia parada de emergência</p></li>
+</ul>
+</dd>
+<dt><strong>Controle de Prensa</strong>:</dt><dd><ul class="simple">
+<li><p>Liga prensa (inicia ciclo de prensagem)</p></li>
+<li><p>Monitora sistema de parada/controle</p></li>
+</ul>
+</dd>
+<dt><strong>Lógica de Controle</strong>:</dt><dd><ul class="simple">
+<li><p>Sinalizadores lógicos (similar ao Andon)</p></li>
+<li><p>Estados de operação (Q1, Q2)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Detalhes dos Registradores:</p>
+<dl>
+<dt><strong>Esteira e Componentes</strong> (0-5):</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_LIGA_ESTEIRA</span></code>: Energiza motor da esteira</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_REC_BLOQUEADOR</span></code>: Recua bloqueador (libera peça)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_REC_COINS</span></code>: Recua mecanismo de moedas</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_PRESS_ON</span></code>: Liga prensa</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_REC_ACTUATOR_STOP_COIN</span></code>: Parada de emergência do atuador</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_AVANCA_COINS</span></code>: Avança mecanismo de moedas para prensagem</p></li>
+</ul>
+</dd>
+<dt><strong>Lógica de Controle</strong> (6-9):</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_L_START</span></code>: Sinal de início (análogo a START do Handling)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_L_RESET</span></code>: Sinal de reset (análogo a RESET do Handling)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_L_Q1</span></code>, <code class="docutils literal notranslate"><span class="pre">MB_L_Q2</span></code>: Sinais de estado/qualidade</p></li>
+</ul>
+</dd>
+<dt>Notas Importantes:</dt><dd><ul class="simple">
+<li><p>Todos os valores são booleanos (True = ativar, False = desativar)</p></li>
+<li><p>Sequência típica: Liga esteira → Avança moedas → Liga prensa → Aguarda → Recua</p></li>
+<li><p>Sistema de segurança crítico: paradas de emergência devem ser responsivas</p></li>
+<li><p>Operação sincronizada: deve coordenar com sensores do módulo (<code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc</span></code>)</p></li>
+</ul>
+</dd>
+<dt>Exemplo de Ciclo de Prensagem:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">Mapping</span><span class="w"> </span><span class="kn">import</span> <span class="n">holding_register_pressing_plc</span> <span class="k">as</span> <span class="n">HR_Press</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Inicia ciclo de prensagem</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR_Press</span><span class="o">.</span><span class="n">MB_LIGA_ESTEIRA</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># Esteira se move</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR_Press</span><span class="o">.</span><span class="n">MB_AVANCA_COINS</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># Posiciona moeda</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR_Press</span><span class="o">.</span><span class="n">MB_PRESS_ON</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>      <span class="c1"># Liga prensa</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Aguarda prensagem</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR_Press</span><span class="o">.</span><span class="n">MB_PRESS_ON</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>     <span class="c1"># Desliga prensa</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR_Press</span><span class="o">.</span><span class="n">MB_REC_COINS</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>     <span class="c1"># Recua moedas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... continuação do ciclo</span>
+</pre></div>
+</div>
+</dd>
+<dt>Ver também:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc</span></code>: Sensores/feedback do módulo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc</span></code>: Comandos para módulo Handling</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_LIGA_ESTEIRA">
+<span class="sig-name descname"><span class="pre">MB_LIGA_ESTEIRA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_LIGA_ESTEIRA" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_REC_BLOQUEADOR">
+<span class="sig-name descname"><span class="pre">MB_REC_BLOQUEADOR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_REC_BLOQUEADOR" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_REC_COINS">
+<span class="sig-name descname"><span class="pre">MB_REC_COINS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_REC_COINS" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_PRESS_ON">
+<span class="sig-name descname"><span class="pre">MB_PRESS_ON</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_PRESS_ON" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_REC_ACTUATOR_STOP_COIN">
+<span class="sig-name descname"><span class="pre">MB_REC_ACTUATOR_STOP_COIN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_REC_ACTUATOR_STOP_COIN" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_AVANCA_COINS">
+<span class="sig-name descname"><span class="pre">MB_AVANCA_COINS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_AVANCA_COINS" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_L_START">
+<span class="sig-name descname"><span class="pre">MB_L_START</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_L_START" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_L_RESET">
+<span class="sig-name descname"><span class="pre">MB_L_RESET</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_L_RESET" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_L_Q1">
+<span class="sig-name descname"><span class="pre">MB_L_Q1</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_L_Q1" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.holding_register_pressing_plc.MB_L_Q2">
+<span class="sig-name descname"><span class="pre">MB_L_Q2</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></span><a class="headerlink" href="#Maps.Mapping.holding_register_pressing_plc.MB_L_Q2" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Maps.Mapping.</span></span><span class="sig-name descname"><span class="pre">input_register_handling_plc</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc" title="Link para esta definição"></a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe que mapeia os Input Registers (registradores de leitura) do PLC do Handling.</p>
+<p>Os Input Registers são endereços Modbus que o sistema de controle utiliza para
+<strong>ler/monitorar</strong> o estado de sensores do módulo Handling. Cada registrador
+representa a leitura de um sensor ou uma variável de estado específica.</p>
+<p>Este módulo fornece feedback sobre:
+- Posição do braço robótico (sensors de fim de curso)
+- Presença de peças (sensores de detecção)
+- Status do magazine
+- Entrada de comandos do operador (botões)
+- Lógica de controle do sistema</p>
+<p>Tipos de Sensores:</p>
+<dl>
+<dt><strong>Sensores de Posição do Braço</strong>:</dt><dd><p>Indicam posições-chave durante o ciclo de movimento:
+- <code class="docutils literal notranslate"><span class="pre">sensor_braco_home</span></code>: Braço em posição inicial/home
+- <code class="docutils literal notranslate"><span class="pre">sensor_braco_deixa</span></code>: Braço deixando o magazine (com peça)
+- <code class="docutils literal notranslate"><span class="pre">sensor_braco_rejeito</span></code>: Braço em posição de rejeito</p>
+</dd>
+<dt><strong>Sensores da Garra</strong>:</dt><dd><p>Indicam status mecânico da garra:
+- <code class="docutils literal notranslate"><span class="pre">sensor_garra_avancada</span></code>: Garra avançada (perto da peça)
+- <code class="docutils literal notranslate"><span class="pre">sensor_garra_recuada</span></code>: Garra recuada (posição inicial)
+- <code class="docutils literal notranslate"><span class="pre">sensor_peca_garra</span></code>: Peça detectada na garra</p>
+</dd>
+<dt><strong>Sensores do Magazine</strong>:</dt><dd><p>Indicam estado do sistema alimentador:
+- <code class="docutils literal notranslate"><span class="pre">sensor_magazine_entrada_recuado</span></code>: Entrada do magazine recuada
+- <code class="docutils literal notranslate"><span class="pre">sensor_magazine_entrada_avancado</span></code>: Entrada do magazine avançada</p>
+</dd>
+<dt><strong>Sensores de Peça e Suporte</strong>:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sensor_peca_suporte</span></code>: Peça presente na posição de suporte</p></li>
+</ul>
+</dd>
+<dt><strong>Botões de Controle Manua</strong>:</dt><dd><p>Indicam entrada do operador:
+- <code class="docutils literal notranslate"><span class="pre">button_start</span></code>: Operador pressionou botão START
+- <code class="docutils literal notranslate"><span class="pre">button_stop</span></code>: Operador pressionou botão STOP
+- <code class="docutils literal notranslate"><span class="pre">button_reset</span></code>: Operador pressionou botão RESET</p>
+</dd>
+<dt><strong>Interfaces de Comunicação</strong>:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_IP_FI_CAN</span></code>: Interface Modbus/CAN (Future CAN integration)</p></li>
+</ul>
+</dd>
+<dt>Notas Importantes:</dt><dd><ul class="simple">
+<li><p>Todos os valores são booleanos (True = condição atendida, False = não atendida)</p></li>
+<li><p>Sensores de fim de curso: True quando o braço/garra está na posição indicada</p></li>
+<li><p>Sensores de detecção: True quando objeto/peça é detectado</p></li>
+<li><p>Os botões podem ter lógica de debounce no PLC real</p></li>
+<li><p>Alguns sensores podem ser combinados para detectar múltiplos estados</p></li>
+</ul>
+</dd>
+<dt>Exemplo de uso:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">Mapping</span><span class="w"> </span><span class="kn">import</span> <span class="n">input_register_handling_plc</span> <span class="k">as</span> <span class="n">IR</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Verificar se braço está em home antes de iniciar</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">plc</span><span class="o">.</span><span class="n">read_register</span><span class="p">(</span><span class="n">IR</span><span class="o">.</span><span class="n">sensor_braco_home</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR</span><span class="o">.</span><span class="n">CMD_START</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Verificar se há peça na garra</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">plc</span><span class="o">.</span><span class="n">read_register</span><span class="p">(</span><span class="n">IR</span><span class="o">.</span><span class="n">sensor_peca_garra</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># Mover para estação</span>
+<span class="gp">... </span>    <span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR</span><span class="o">.</span><span class="n">GRIPPER_TO_STATION_DIR</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Esperar até garra estar totalmente recuada</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="ow">not</span> <span class="n">plc</span><span class="o">.</span><span class="n">read_register</span><span class="p">(</span><span class="n">IR</span><span class="o">.</span><span class="n">sensor_garra_recuada</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Ver também:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">holding_register_handling_plc</span></code>: Registradores de escrita (comandos) deste módulo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_register_pressing_plc</span></code>: Sensores do módulo de prensagem</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.sensor_peca_suporte">
+<span class="sig-name descname"><span class="pre">sensor_peca_suporte</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.sensor_peca_suporte" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.sensor_braco_deixa">
+<span class="sig-name descname"><span class="pre">sensor_braco_deixa</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.sensor_braco_deixa" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.sensor_braco_home">
+<span class="sig-name descname"><span class="pre">sensor_braco_home</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.sensor_braco_home" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.sensor_braco_rejeito">
+<span class="sig-name descname"><span class="pre">sensor_braco_rejeito</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.sensor_braco_rejeito" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.sensor_garra_avancada">
+<span class="sig-name descname"><span class="pre">sensor_garra_avancada</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.sensor_garra_avancada" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.sensor_garra_recuada">
+<span class="sig-name descname"><span class="pre">sensor_garra_recuada</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.sensor_garra_recuada" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.sensor_peca_garra">
+<span class="sig-name descname"><span class="pre">sensor_peca_garra</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.sensor_peca_garra" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.MB_IP_FI_CAN">
+<span class="sig-name descname"><span class="pre">MB_IP_FI_CAN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.MB_IP_FI_CAN" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.button_start">
+<span class="sig-name descname"><span class="pre">button_start</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.button_start" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.button_stop">
+<span class="sig-name descname"><span class="pre">button_stop</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.button_stop" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.button_reset">
+<span class="sig-name descname"><span class="pre">button_reset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.button_reset" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.sensor_magazine_entrada_recuado">
+<span class="sig-name descname"><span class="pre">sensor_magazine_entrada_recuado</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.sensor_magazine_entrada_recuado" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_handling_plc.sensor_magazine_entrada_avancado">
+<span class="sig-name descname"><span class="pre">sensor_magazine_entrada_avancado</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></span><a class="headerlink" href="#Maps.Mapping.input_register_handling_plc.sensor_magazine_entrada_avancado" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Maps.Mapping.</span></span><span class="sig-name descname"><span class="pre">input_register_pressing_plc</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc" title="Link para esta definição"></a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe que mapeia os Input Registers (registradores de leitura) do PLC de Prensagem.</p>
+<p>Os Input Registers são endereços Modbus que o sistema de controle utiliza para
+<strong>ler/monitorar</strong> o estado de sensores e variáveis do módulo Pressing. Cada
+registrador fornece feedback crítico para tomada de decisão e sincronização.</p>
+<p>Este módulo fornece feedback sobre:
+- Botões de controle do operador
+- Posição de peças no sistema
+- Status de sensores de bloqueio e barreira
+- Sinais de posicionamento de moedas</p>
+<p>Categorias de Sensores:</p>
+<dl class="simple">
+<dt><strong>Controles Manuais</strong> (0-2):</dt><dd><ul class="simple">
+<li><p>Botões do operador: START, STOP, RESET</p></li>
+<li><p>Permitem comando manual do sistema</p></li>
+</ul>
+</dd>
+<dt><strong>Sensores de Detecção de Peças</strong> (3-5):</dt><dd><ul class="simple">
+<li><p>Detecção de peças avançadas na esteira</p></li>
+<li><p>Detecção em diferentes pontos do ciclo</p></li>
+</ul>
+</dd>
+<dt><strong>Sensores de Posicionamento</strong> (6-9):</dt><dd><ul class="simple">
+<li><p>Sensores de fim de curso</p></li>
+<li><p>Posições críticas para sincronização</p></li>
+</ul>
+</dd>
+</dl>
+<p>Detalhes dos Registradores:</p>
+<dl>
+<dt><strong>Botões Manuais</strong> (0-2):</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_START</span></code>: Operador pressiona botão START</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_STOP</span></code>: Operador pressiona botão STOP</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_RESET</span></code>: Operador pressiona botão RESET</p></li>
+</ul>
+</dd>
+<dt><strong>Sensores de Peça</strong> (3-5):</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_PART_AV</span></code>: Peça avançada (presença na área de prensagem)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_PC_COIN</span></code>: Peça (moeda) presente no sistema</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_PC_FIM</span></code>: Peça no fim de curso (ready para prensagem)</p></li>
+</ul>
+</dd>
+<dt><strong>Sensores de Barreira/Bloqueio</strong> (6-7):</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_SENSOR_IND</span></code>: Sensor indicador (detector indutor)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_BARREIRA_IND</span></code>: Barreira indutiva (detecção de presença)</p></li>
+</ul>
+</dd>
+<dt><strong>Posições de Bloqueio e Moedas</strong> (8-10):</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_BLOQ_FRONT</span></code>: Bloqueador em posição frontal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_COIN_REC</span></code>: Moedas em posição recuada (home)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MB_COIN_FRONT</span></code>: Moedas em posição frontal (sob prensa)</p></li>
+</ul>
+</dd>
+<dt>Fluxo Típico de Leitura:</dt><dd><ol class="arabic simple">
+<li><p>Verificar <code class="docutils literal notranslate"><span class="pre">MB_START</span></code> ou automático</p></li>
+<li><p>Liga esteira (<code class="docutils literal notranslate"><span class="pre">MB_LIGA_ESTEIRA</span></code>)</p></li>
+<li><p>Aguarda <code class="docutils literal notranslate"><span class="pre">MB_PC_FIM</span></code> (peça em posição)</p></li>
+<li><p>Liga prensa (<code class="docutils literal notranslate"><span class="pre">MB_PRESS_ON</span></code>)</p></li>
+<li><p>Verifica conclusão</p></li>
+<li><p>Retorna à posição inicial</p></li>
+</ol>
+</dd>
+<dt>Notas Importantes:</dt><dd><ul class="simple">
+<li><p>Todos os valores são booleanos (True = condição detectada, False = não)</p></li>
+<li><p>Ordem crítica: antes de prensagem, peça DEVE estar em <code class="docutils literal notranslate"><span class="pre">MB_PC_FIM</span></code></p></li>
+<li><p>Sensores indutivos (<code class="docutils literal notranslate"><span class="pre">MB_SENSOR_IND</span></code>, <code class="docutils literal notranslate"><span class="pre">MB_BARREIRA_IND</span></code>): não mecânicos, confiaáveis</p></li>
+<li><p>Lógica de sincronização: ler sensores antes de enviar próximo comando</p></li>
+<li><p>Tempo de resposta: cada sensor tem atraso mecânico (bufferização pode ser necessária)</p></li>
+</ul>
+</dd>
+<dt>Exemplo de Lógica de Segurança:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">Mapping</span><span class="w"> </span><span class="kn">import</span> <span class="n">input_register_pressing_plc</span> <span class="k">as</span> <span class="n">IR_Press</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">Mapping</span><span class="w"> </span><span class="kn">import</span> <span class="n">holding_register_pressing_plc</span> <span class="k">as</span> <span class="n">HR_Press</span>
+<span class="gp">&gt;&gt;&gt; </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Segurança: apenas ativar prensa se moeda está em posição frontal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">plc</span><span class="o">.</span><span class="n">read_register</span><span class="p">(</span><span class="n">IR_Press</span><span class="o">.</span><span class="n">MB_COIN_FRONT</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">plc</span><span class="o">.</span><span class="n">write_register</span><span class="p">(</span><span class="n">HR_Press</span><span class="o">.</span><span class="n">MB_PRESS_ON</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERRO: Moeda não está em posição de prensagem!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Aciona alarme, registra erro</span>
+</pre></div>
+</div>
+</dd>
+<dt>Ver também:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">holding_register_pressing_plc</span></code>: Comandos para este módulo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_register_handling_plc</span></code>: Sensores do módulo Handling</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_START">
+<span class="sig-name descname"><span class="pre">MB_START</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_START" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_STOP">
+<span class="sig-name descname"><span class="pre">MB_STOP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_STOP" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_RESET">
+<span class="sig-name descname"><span class="pre">MB_RESET</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_RESET" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_PART_AV">
+<span class="sig-name descname"><span class="pre">MB_PART_AV</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_PART_AV" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_PC_COIN">
+<span class="sig-name descname"><span class="pre">MB_PC_COIN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_PC_COIN" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_PC_FIM">
+<span class="sig-name descname"><span class="pre">MB_PC_FIM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_PC_FIM" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_SENSOR_IND">
+<span class="sig-name descname"><span class="pre">MB_SENSOR_IND</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_SENSOR_IND" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_BARREIRA_IND">
+<span class="sig-name descname"><span class="pre">MB_BARREIRA_IND</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_BARREIRA_IND" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_BLOQ_FRONT">
+<span class="sig-name descname"><span class="pre">MB_BLOQ_FRONT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_BLOQ_FRONT" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_COIN_REC">
+<span class="sig-name descname"><span class="pre">MB_COIN_REC</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_COIN_REC" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Maps.Mapping.input_register_pressing_plc.MB_COIN_FRONT">
+<span class="sig-name descname"><span class="pre">MB_COIN_FRONT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></span><a class="headerlink" href="#Maps.Mapping.input_register_pressing_plc.MB_COIN_FRONT" title="Link para esta definição"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Setup Application" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2026, Lukas L. Moreira; Thiago R. Salgado; Nathalia C. Damasceno.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

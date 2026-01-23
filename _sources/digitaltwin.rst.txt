@@ -1,0 +1,12 @@
+Digital Twin
+============
+
+Creating a Digital Twin
+-----------------------
+
+.. currentmodule:: Server.DigitalTwin
+
+.. autoclass:: DigitalTwin
+   :members:
+
+For more information about registers mapping, see :ref:`mapping PLC <mapping>`.

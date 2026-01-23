@@ -1,0 +1,22 @@
+.. MPS-Festo documentation master file, created by
+   sphinx-quickstart on Mon Jan 19 10:50:17 2026.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to the MPS-Festo documentation!
+=======================================
+
+**MPS-Festo** é um projeto voltado para a integração de uma planta de alocação de recursos com um MES (Manufacturing Execution System),
+através de protocolos de comunicação industrial. Ele visa conectar a planta por meio, principalmente do Modbus TCP, para controlar e monitorar os processos de manufatura, 
+bem como criar um gemeo digital da planta para simulação e análise de desempenho.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   mes
+   digitaltwin
+   usage
+   mapping
+
+Para mais informações sobre como usar o MPS-Festo, consulte a seção :doc:`usage`, lá você encontrará instruções detalhadas sobre instalação :ref:`install <installation>` e dependências :ref:`libraries <dependencies>`.
