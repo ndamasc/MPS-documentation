@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend - MPS Dashboard &mdash; Documentação MPS-Festo 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=05d536ce"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=71a39b36"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="Setup Application" href="usage.html" />
+    <link rel="prev" title="Digital Twin" href="digitaltwin.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MPS-Festo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mes.html">MES (Manufacturing Execution System)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digitaltwin.html">Digital Twin</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Frontend - MPS Dashboard</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#funcionalidades">Funcionalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rotas-e-paginas">Rotas e Páginas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard-rota">Dashboard (Rota: /)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ordens-rota-orders">Ordens (Rota: /orders)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#arquitetura">Arquitetura</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stack-tecnologico">Stack Tecnológico</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estrutura-do-projeto">Estrutura do Projeto</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instalacao-e-setup">Instalação e Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pre-requisitos">Pré-requisitos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacao-de-dependencias">Instalação de Dependências</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#desenvolvimento">Desenvolvimento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modo-de-desenvolvimento">Modo de desenvolvimento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-para-producao">Build para Produção</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#acessar-de-outros-dispositivos-na-rede">Acessar de outros dispositivos na rede</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deployment">Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Build para Produção</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#recursos">Recursos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contato-e-suporte">Contato e Suporte</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Setup Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mapping.html">Mapping MPS-Festo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MPS-Festo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Frontend - MPS Dashboard</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/frontend.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="frontend-mps-dashboard">
+<h1>Frontend - MPS Dashboard<a class="headerlink" href="#frontend-mps-dashboard" title="Link para este cabeçalho"></a></h1>
+<p>O <strong>MPS Dashboard</strong> é a interface web do sistema Modular Producing System (MPS), desenvolvido com <strong>React</strong> e <strong>TypeScript</strong>. Ele fornece visualização em tempo real, monitoramento e controle do sistema de manufatura integrado.</p>
+<nav class="contents local" id="sumario">
+<ul class="simple">
+<li><p><a class="reference internal" href="#funcionalidades" id="id2">Funcionalidades</a></p></li>
+<li><p><a class="reference internal" href="#rotas-e-paginas" id="id3">Rotas e Páginas</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dashboard-rota" id="id4">Dashboard (Rota: /)</a></p></li>
+<li><p><a class="reference internal" href="#ordens-rota-orders" id="id5">Ordens (Rota: /orders)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#arquitetura" id="id6">Arquitetura</a></p>
+<ul>
+<li><p><a class="reference internal" href="#stack-tecnologico" id="id7">Stack Tecnológico</a></p></li>
+<li><p><a class="reference internal" href="#estrutura-do-projeto" id="id8">Estrutura do Projeto</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#instalacao-e-setup" id="id9">Instalação e Setup</a></p>
+<ul>
+<li><p><a class="reference internal" href="#pre-requisitos" id="id10">Pré-requisitos</a></p></li>
+<li><p><a class="reference internal" href="#instalacao-de-dependencias" id="id11">Instalação de Dependências</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#desenvolvimento" id="id12">Desenvolvimento</a></p>
+<ul>
+<li><p><a class="reference internal" href="#modo-de-desenvolvimento" id="id13">Modo de desenvolvimento</a></p></li>
+<li><p><a class="reference internal" href="#build-para-producao" id="id14">Build para Produção</a></p></li>
+<li><p><a class="reference internal" href="#acessar-de-outros-dispositivos-na-rede" id="id15">Acessar de outros dispositivos na rede</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#deployment" id="id16">Deployment</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id17">Build para Produção</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#recursos" id="id18">Recursos</a></p></li>
+<li><p><a class="reference internal" href="#contato-e-suporte" id="id19">Contato e Suporte</a></p></li>
+</ul>
+</nav>
+<section id="funcionalidades">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Funcionalidades</a><a class="headerlink" href="#funcionalidades" title="Link para este cabeçalho"></a></h2>
+<ul class="simple">
+<li><p><strong>Dashboard</strong> em tempo real com monitoramento de sensores</p></li>
+<li><p><strong>Gerenciamento</strong> de ordens de produção</p></li>
+<li><p><strong>Estatísticas</strong> e gráficos de produção</p></li>
+<li><p><strong>Sistema</strong> de autenticação com JWT</p></li>
+<li><p><strong>Histórico</strong> de peças processadas</p></li>
+</ul>
+</section>
+<section id="rotas-e-paginas">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Rotas e Páginas</a><a class="headerlink" href="#rotas-e-paginas" title="Link para este cabeçalho"></a></h2>
+<p>O MPS Dashboard possui duas paginas principais para o gerenciamento, a principal e a de ordens:</p>
+<section id="dashboard-rota">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Dashboard (Rota: /)</a><a class="headerlink" href="#dashboard-rota" title="Link para este cabeçalho"></a></h3>
+<p><strong>O que faz:</strong></p>
+<p>Página de monitoramento em tempo real que busca dados do backend a cada <strong>2 segundos</strong> e exibe:</p>
+<ul class="simple">
+<li><p>Status da máquina (rodando, parada, emergência)</p></li>
+<li><p>Totalizadores de peças (total, aprovadas, rejeitadas)</p></li>
+<li><p>Gráfico de produção por hora</p></li>
+<li><p>Ordem ativa em processamento</p></li>
+<li><p>Tabela paginada das últimas peças produzidas</p></li>
+<li><p>Histórico das últimas ordens</p></li>
+</ul>
+<p><strong>Endpoints que chama:</strong></p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="nx">http</span><span class="o">:</span><span class="c1">//localhost:8000/api/machine-status</span>
+<span class="nx">GET</span><span class="w"> </span><span class="nx">http</span><span class="o">:</span><span class="c1">//localhost:8000/api/production-stats</span>
+<span class="nx">GET</span><span class="w"> </span><span class="nx">http</span><span class="o">:</span><span class="c1">//localhost:8000/api/hourly-production</span>
+<span class="nx">GET</span><span class="w"> </span><span class="nx">http</span><span class="o">:</span><span class="c1">//localhost:8000/api/recent-orders</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidades:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>GET /api/recent-orders</strong> - Lista de últimas ordens:
+- Mostra ordens recentes
+- Status (Pendente, Em Progresso, Concluída)
+- Progresso visual (barra)
+- Quantidade processada vs solicitada</p></li>
+<li><p><strong>GET /api/machine-status</strong> - Verifica status da máquina:
+- Indica se máquina está rodando, parada ou em emergência</p></li>
+<li><p><strong>GET /api/production-stats</strong> - Estatísticas de produção:
+- Total de peças produzidas
+- Peças rejeitadas
+- Tempo médio de ciclo
+- Percentual de uptime</p></li>
+<li><p><strong>GET /api/hourly-production</strong> - Produção por hora:
+- Dados para gráfico de produção na última hora</p></li>
+</ol>
+</section>
+<section id="ordens-rota-orders">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Ordens (Rota: /orders)</a><a class="headerlink" href="#ordens-rota-orders" title="Link para este cabeçalho"></a></h3>
+<p><strong>O que faz:</strong></p>
+<p>Página para criar novas ordens de produção e visualizar o histórico de ordens.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="nx">http</span><span class="o">:</span><span class="c1">//localhost:8000/api/recent-orders</span>
+<span class="nx">POST</span><span class="w"> </span><span class="nx">http</span><span class="o">:</span><span class="c1">//localhost:8000/api/create-order</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidades:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>POST /api/create-order</strong> - Formulário para criar nova ordem de produção:
+- Nome da ordem
+- Cor da peça (Prata, Preto, Rosa)
+- Quantidade</p></li>
+<li><p><strong>GET /api/recent-orders</strong> - Histórico de últimas ordens:
+- Lista paginada das últimas ordens criadas</p></li>
+</ol>
+</section>
+</section>
+<section id="arquitetura">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Arquitetura</a><a class="headerlink" href="#arquitetura" title="Link para este cabeçalho"></a></h2>
+<section id="stack-tecnologico">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Stack Tecnológico</a><a class="headerlink" href="#stack-tecnologico" title="Link para este cabeçalho"></a></h3>
+<ul class="simple">
+<li><p><strong>Framework</strong>: React 19.2.3</p></li>
+<li><p><strong>Linguagem</strong>: TypeScript</p></li>
+<li><p><strong>Roteamento</strong>: React Router</p></li>
+<li><p><strong>Requisições HTTP</strong>: Axios</p></li>
+<li><p><strong>Notificações</strong>: React Toastify 11.0.5</p></li>
+</ul>
+</section>
+<section id="estrutura-do-projeto">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Estrutura do Projeto</a><a class="headerlink" href="#estrutura-do-projeto" title="Link para este cabeçalho"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mps-dashboard-ts/
+├── public/              # Arquivos estáticos
+├── src/
+│   ├── components/      # Componentes reutilizáveis
+│   ├── pages/          # Páginas da aplicação
+│   ├── utils/          # Funções auxiliares
+│   ├── App.tsx         # Componente raiz
+│   └── index.tsx       # Entry point
+├── package.json        # Dependências e scripts
+└── tsconfig.json       # Configuração TypeScript
+</pre></div>
+</div>
+</section>
+</section>
+<section id="instalacao-e-setup">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Instalação e Setup</a><a class="headerlink" href="#instalacao-e-setup" title="Link para este cabeçalho"></a></h2>
+<section id="pre-requisitos">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Pré-requisitos</a><a class="headerlink" href="#pre-requisitos" title="Link para este cabeçalho"></a></h3>
+<ul class="simple">
+<li><p><strong>Node.js</strong>: 14.0 ou superior</p></li>
+<li><p><strong>npm</strong>: 6.0 ou superior (ou yarn/pnpm)</p></li>
+</ul>
+</section>
+<section id="instalacao-de-dependencias">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Instalação de Dependências</a><a class="headerlink" href="#instalacao-de-dependencias" title="Link para este cabeçalho"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Entrar na pasta do frontend</span>
+<span class="nb">cd</span><span class="w"> </span>Modular-Producing-System---MPS/frontend/mps-dashboard-ts
+
+<span class="c1"># Instalar dependências</span>
+npm<span class="w"> </span>install
+
+<span class="c1"># ou com yarn</span>
+yarn<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+</section>
+<section id="desenvolvimento">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Desenvolvimento</a><a class="headerlink" href="#desenvolvimento" title="Link para este cabeçalho"></a></h2>
+<section id="modo-de-desenvolvimento">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Modo de desenvolvimento</a><a class="headerlink" href="#modo-de-desenvolvimento" title="Link para este cabeçalho"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>start
+</pre></div>
+</div>
+<p>O aplicativo abrirá automaticamente em <code class="docutils literal notranslate"><span class="pre">http://localhost:3000</span></code>.</p>
+</section>
+<section id="build-para-producao">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Build para Produção</a><a class="headerlink" href="#build-para-producao" title="Link para este cabeçalho"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>run<span class="w"> </span>build
+
+Gera<span class="w"> </span>pasta<span class="w"> </span><span class="sb">``</span>build/<span class="sb">``</span><span class="w"> </span>pronta<span class="w"> </span>para<span class="w"> </span>deploy.
+</pre></div>
+</div>
+</section>
+<section id="acessar-de-outros-dispositivos-na-rede">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Acessar de outros dispositivos na rede</a><a class="headerlink" href="#acessar-de-outros-dispositivos-na-rede" title="Link para este cabeçalho"></a></h3>
+<p>Descobrir IP local:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows</span>
+ipconfig
+
+<span class="c1"># Linux/Mac</span>
+ifconfig
+</pre></div>
+</div>
+<p>Iniciar servidor com acesso externo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows</span>
+<span class="nb">set</span><span class="w"> </span><span class="nv">HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>start
+
+<span class="c1"># Linux/Mac</span>
+<span class="nv">HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>npm<span class="w"> </span>start
+</pre></div>
+</div>
+<p>Acessa pelo navegador em <code class="docutils literal notranslate"><span class="pre">http://SEU_IP:3000</span></code>.</p>
+</section>
+</section>
+<section id="deployment">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Deployment</a><a class="headerlink" href="#deployment" title="Link para este cabeçalho"></a></h2>
+<section id="id1">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Build para Produção</a><a class="headerlink" href="#id1" title="Link para este cabeçalho"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>run<span class="w"> </span>build
+</pre></div>
+</div>
+<p>Gera pasta <code class="docutils literal notranslate"><span class="pre">build/</span></code> pronta para deploy.</p>
+</section>
+</section>
+<section id="recursos">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Recursos</a><a class="headerlink" href="#recursos" title="Link para este cabeçalho"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://react.dev">Documentação React</a></p></li>
+<li><p><a class="reference external" href="https://www.typescriptlang.org/docs">TypeScript Handbook</a></p></li>
+<li><p><a class="reference external" href="https://reactrouter.com">React Router</a></p></li>
+<li><p><a class="reference external" href="https://axios-http.com">Axios Documentation</a></p></li>
+<li><p><a class="reference external" href="https://create-react-app.dev">Create React App</a></p></li>
+</ul>
+</section>
+<section id="contato-e-suporte">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Contato e Suporte</a><a class="headerlink" href="#contato-e-suporte" title="Link para este cabeçalho"></a></h2>
+<p>Para dúvidas sobre o frontend, consulte:</p>
+<ul class="simple">
+<li><p>Documentação do projeto: <a class="reference internal" href="usage.html"><span class="doc">Setup Application</span></a></p></li>
+<li><p>Backend API: <a class="reference internal" href="mes.html"><span class="doc">MES (Manufacturing Execution System)</span></a></p></li>
+<li><p>Issues no GitHub: <a class="reference external" href="#">MPS Issues</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="digitaltwin.html" class="btn btn-neutral float-left" title="Digital Twin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Setup Application" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2026, Lukas L. Moreira; Thiago R. Salgado; Nathalia C. Damasceno.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
