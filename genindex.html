@@ -44,6 +44,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="mes.html">MES (Manufacturing Execution System)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digitaltwin.html">Digital Twin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend.html">Frontend - MPS Dashboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Setup Application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mapping.html">Mapping MPS-Festo</a></li>
 </ul>
@@ -86,6 +87,7 @@
  | <a href="#M"><strong>M</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#U"><strong>U</strong></a>
  
 </div>
 <h2 id="B">B</h2>
@@ -141,16 +143,20 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mes.html#Client.MES.MES.get_active_order">get_active_order() (método Client.MES.MES)</a>
+</li>
+      <li><a href="mes.html#Client.MES.MES.get_db_connection">get_db_connection() (método Client.MES.MES)</a>
+</li>
       <li><a href="mes.html#Client.MES.MES.get_plc">get_plc() (método Client.MES.MES)</a>
 </li>
       <li><a href="mes.html#Client.MES.MES.gripper_close">gripper_close() (método Client.MES.MES)</a>
 </li>
       <li><a href="mapping.html#Maps.Mapping.holding_register_handling_plc.GRIPPER_DOWN">GRIPPER_DOWN (atributo Maps.Mapping.holding_register_handling_plc)</a>
 </li>
-      <li><a href="mes.html#Client.MES.MES.gripper_down">gripper_down() (método Client.MES.MES)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mes.html#Client.MES.MES.gripper_down">gripper_down() (método Client.MES.MES)</a>
+</li>
       <li><a href="mapping.html#Maps.Mapping.holding_register_handling_plc.GRIPPER_OPEN">GRIPPER_OPEN (atributo Maps.Mapping.holding_register_handling_plc)</a>
 </li>
       <li><a href="mes.html#Client.MES.MES.gripper_open">gripper_open() (método Client.MES.MES)</a>
@@ -249,10 +255,10 @@
 </li>
       <li><a href="mapping.html#Maps.Mapping.holding_register_pressing_plc.MB_LIGA_ESTEIRA">MB_LIGA_ESTEIRA (atributo Maps.Mapping.holding_register_pressing_plc)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mapping.html#Maps.Mapping.input_register_pressing_plc.MB_PART_AV">MB_PART_AV (atributo Maps.Mapping.input_register_pressing_plc)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mapping.html#Maps.Mapping.input_register_pressing_plc.MB_PC_COIN">MB_PC_COIN (atributo Maps.Mapping.input_register_pressing_plc)</a>
 </li>
       <li><a href="mapping.html#Maps.Mapping.input_register_pressing_plc.MB_PC_FIM">MB_PC_FIM (atributo Maps.Mapping.input_register_pressing_plc)</a>
@@ -287,6 +293,8 @@
 </li>
       <li><a href="mes.html#Client.MES.MES.move_to_reject">move_to_reject() (método Client.MES.MES)</a>
 </li>
+      <li><a href="mes.html#Client.MES.MES.move_to_reject_reset">move_to_reject_reset() (método Client.MES.MES)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -294,6 +302,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mes.html#Client.MES.MES.recognize_inputs_handling">recognize_inputs_handling() (método Client.MES.MES)</a>
+</li>
+      <li><a href="mes.html#Client.MES.MES.register_piece">register_piece() (método Client.MES.MES)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -330,6 +340,14 @@
       <li><a href="digitaltwin.html#Server.DigitalTwin.DigitalTwin.set_parameter">set_parameter() (método Server.DigitalTwin.DigitalTwin)</a>
 </li>
       <li><a href="mes.html#Client.MES.MES.stop_all_operations">stop_all_operations() (método Client.MES.MES)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mes.html#Client.MES.MES.update_order_progress">update_order_progress() (método Client.MES.MES)</a>
 </li>
   </ul></td>
 </tr></table>
