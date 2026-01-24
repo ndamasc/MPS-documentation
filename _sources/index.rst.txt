@@ -16,6 +16,7 @@ bem como criar um gemeo digital da planta para simulação e análise de desempe
 
    mes
    digitaltwin
+   frontend
    usage
    mapping
 
