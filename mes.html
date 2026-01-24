@@ -49,6 +49,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#Client.MES.MES"><code class="docutils literal notranslate"><span class="pre">MES</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.flow_first_plc"><code class="docutils literal notranslate"><span class="pre">MES.flow_first_plc()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.flow_second_plc"><code class="docutils literal notranslate"><span class="pre">MES.flow_second_plc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.get_active_order"><code class="docutils literal notranslate"><span class="pre">MES.get_active_order()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.get_db_connection"><code class="docutils literal notranslate"><span class="pre">MES.get_db_connection()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.get_plc"><code class="docutils literal notranslate"><span class="pre">MES.get_plc()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.gripper_close"><code class="docutils literal notranslate"><span class="pre">MES.gripper_close()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.gripper_down"><code class="docutils literal notranslate"><span class="pre">MES.gripper_down()</span></code></a></li>
@@ -62,14 +64,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.move_to_home"><code class="docutils literal notranslate"><span class="pre">MES.move_to_home()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.move_to_home_reset"><code class="docutils literal notranslate"><span class="pre">MES.move_to_home_reset()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.move_to_reject"><code class="docutils literal notranslate"><span class="pre">MES.move_to_reject()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.move_to_reject_reset"><code class="docutils literal notranslate"><span class="pre">MES.move_to_reject_reset()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.recognize_inputs_handling"><code class="docutils literal notranslate"><span class="pre">MES.recognize_inputs_handling()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.register_piece"><code class="docutils literal notranslate"><span class="pre">MES.register_piece()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.reset_to_home_position"><code class="docutils literal notranslate"><span class="pre">MES.reset_to_home_position()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.stop_all_operations"><code class="docutils literal notranslate"><span class="pre">MES.stop_all_operations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Client.MES.MES.update_order_progress"><code class="docutils literal notranslate"><span class="pre">MES.update_order_progress()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="digitaltwin.html">Digital Twin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend.html">Frontend - MPS Dashboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Setup Application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mapping.html">Mapping MPS-Festo</a></li>
 </ul>
@@ -135,6 +141,7 @@
 <li><p>Avanço e ejeção do magazine.</p></li>
 <li><p>Operações da garra (abrir, fechar, mover para posições específicas).</p></li>
 <li><p>Detecção e classificação de peças (preto, prata, rosa).</p></li>
+<li><p>SÓ PROCESSA SE HOUVER ORDEM ATIVA</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p>None</p>
@@ -143,6 +150,7 @@
 <li><p>O fluxo é contínuo e depende do estado da máquina.</p></li>
 <li><p>Utiliza registros Modbus para comunicação com o PLC.</p></li>
 <li><p>Armazena a classificação das peças em uma lista ‘parts’.</p></li>
+<li><p>BLOQUEIA processamento se não houver ordem ativa</p></li>
 </ul>
 </dd>
 </dl>
@@ -158,6 +166,9 @@
 <li><p>Detecção de peças na esteira.</p></li>
 <li><p>Identificação da cor das peças (prata, rosa).</p></li>
 <li><p>Controle da esteira e sinalização via Digital Twin.</p></li>
+<li><p>Liberação da flag is_conveyor_available quando peça sai do sensor final</p></li>
+<li><p>Integração com ordens de produção (aprovação/rejeição baseada em cor)</p></li>
+<li><p>SÓ PROCESSA SE HOUVER ORDEM ATIVA</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p>None</p>
@@ -166,9 +177,27 @@
 <li><p>O fluxo é contínuo e depende do estado da máquina.</p></li>
 <li><p>Utiliza registros Modbus para comunicação com o PLC.</p></li>
 <li><p>Utiliza a lista ‘parts’ para armazenar a classificação das peças</p></li>
+<li><p>Registra peças aprovadas/rejeitadas no banco de dados</p></li>
+<li><p>BLOQUEIA processamento se não houver ordem ativa</p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.get_active_order">
+<span class="sig-name descname"><span class="pre">get_active_order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.get_active_order" title="Link para esta definição"></a></dt>
+<dd><p>Busca a ordem de produção mais antiga que ainda não foi finalizada.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dict: Dicionário com os dados da ordem ativa ou None se não houver ordem ativa.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.get_db_connection">
+<span class="sig-name descname"><span class="pre">get_db_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.get_db_connection" title="Link para esta definição"></a></dt>
+<dd><p>Cria e retorna uma conexão com o banco de dados.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -375,6 +404,22 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.move_to_reject_reset">
+<span class="sig-name descname"><span class="pre">move_to_reject_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.move_to_reject_reset" title="Link para esta definição"></a></dt>
+<dd><p>Método para mover o manipulador para a posição rejeito durante a operação normal.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se o manipulador chegou na posição rejeito com sucesso, False em caso de erro.</p>
+</dd>
+<dt>Observação:</dt><dd><ul class="simple">
+<li><p>Verifica o estado da máquina antes de iniciar o movimento.</p></li>
+<li><p>Utiliza um timeout para evitar espera indefinida.</p></li>
+<li><p>Notifica o Digital Twin sobre o status da operação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="Client.MES.MES.recognize_inputs_handling">
 <span class="sig-name descname"><span class="pre">recognize_inputs_handling</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.recognize_inputs_handling" title="Link para esta definição"></a></dt>
 <dd><p>Método para reconhecer e exibir o estado dos botões de start, stop e reset do PLC de manuseio.</p>
@@ -390,6 +435,20 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.register_piece">
+<span class="sig-name descname"><span class="pre">register_piece</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.register_piece" title="Link para esta definição"></a></dt>
+<dd><p>Registra uma peça processada no banco de dados.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>color (str): Cor da peça (‘preto’, ‘prata’, ‘rosa’)
+result (int): 1 para aprovada, 0 para rejeitada
+order_id (int): ID da ordem de produção (opcional)</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True se registrado com sucesso, False caso contrário</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="Client.MES.MES.reset_to_home_position">
 <span class="sig-name descname"><span class="pre">reset_to_home_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.reset_to_home_position" title="Link para esta definição"></a></dt>
 <dd><p>Método que reseta o sistema: sobe garra, recua magazine e vai para home</p>
@@ -399,6 +458,20 @@
 <dt class="sig sig-object py" id="Client.MES.MES.stop_all_operations">
 <span class="sig-name descname"><span class="pre">stop_all_operations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.stop_all_operations" title="Link para esta definição"></a></dt>
 <dd><p>Método para parar todas as operações de todos os PLC’s.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Client.MES.MES.update_order_progress">
+<span class="sig-name descname"><span class="pre">update_order_progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Client.MES.MES.update_order_progress" title="Link para esta definição"></a></dt>
+<dd><p>Incrementa o contador de peças processadas de uma ordem.
+Se atingir a quantidade solicitada, marca a ordem como finalizada.
+Sempre atualiza updated_at.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>order_id (int): ID da ordem a ser atualizada</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True se atualizado com sucesso, False caso contrário</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
